@@ -35,10 +35,16 @@ class Cliente
     private ?string $correo = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $direccion = null;
+    private ?string $notas = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $localidad = null;
+    #[ORM\Column(length: 255)]
+    private ?string $carpeta = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $creado_en = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $actualizado_en = null;
 
     public function getId(): ?int
     {
@@ -129,26 +135,50 @@ class Cliente
         return $this;
     }
 
-    public function getDireccion(): ?string
+    public function getNotas(): ?string
     {
-        return $this->direccion;
+        return $this->notas;
     }
 
-    public function setDireccion(?string $direccion): static
+    public function setNotas(?string $notas): static
     {
-        $this->direccion = $direccion;
+        $this->notas = $notas;
 
         return $this;
     }
 
-    public function getLocalidad(): ?string
+    public function getCarpeta(): ?string
     {
-        return $this->localidad;
+        return $this->carpeta;
     }
 
-    public function setLocalidad(?string $localidad): static
+    public function setCarpeta(string $carpeta): static
     {
-        $this->localidad = $localidad;
+        $this->carpeta = $carpeta;
+
+        return $this;
+    }
+
+    public function getCreadoEn(): ?\DateTime
+    {
+        return $this->creado_en;
+    }
+
+    public function setCreadoEn(?\DateTime $creado_en): static
+    {
+        $this->creado_en = $creado_en;
+
+        return $this;
+    }
+
+    public function getActualizadoEn(): ?\DateTime
+    {
+        return $this->actualizado_en;
+    }
+
+    public function setActualizadoEn(?\DateTime $actualizado_en): static
+    {
+        $this->actualizado_en = $actualizado_en;
 
         return $this;
     }
